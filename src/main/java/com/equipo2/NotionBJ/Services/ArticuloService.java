@@ -50,6 +50,43 @@ public class ArticuloService {
         throw new NoSuchElementException();
     }
 
+    /**
+     * Metodo que crea un articulo en la base de datos
+     * @param articulo que pasamos por el body
+     * @return el articulo creado
+     */
+    public Articulo save(Articulo articulo){
+        return articuloRepository.save(articulo);
+    }
 
+    /**
+     * Metodo que actuliza un articulo si existe en la base de datos
+     * @param articulo que pasamos por el body
+     * @return el articulo actualizado
+     */
+    public Articulo updateArticulo(Articulo articulo){
+        if(articuloRepository.existsById(articulo.getId())) {
+            return articuloRepository.save(articulo);
+        }
+        throw new NoSuchElementException();
+    }
+
+    /**
+     * Metodo que elimina todos los articulos de la base de datos
+     */
+    public void deleteAll(){
+        articuloRepository.deleteAll();
+    }
+
+    /**
+     * Metodo que elimina un articulo por id
+     * @param id del articulo a eliminar
+     */
+    public void deleteById(Long id){
+        if(articuloRepository.existsById(id)){
+            articuloRepository.deleteById(id);
+        }
+        throw new NoSuchElementException();
+    }
 
 }
