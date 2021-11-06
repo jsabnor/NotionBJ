@@ -1,5 +1,7 @@
 package com.equipo2.NotionBJ.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import io.swagger.annotations.ApiModelProperty;
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -36,10 +38,12 @@ public class Articulo {
     @ApiModelProperty("Contenido del Articulo")
     private String contenido;
 
-    //autor
-    @ManyToOne()
-    @JoinColumn(name="categoria_id")
+    // relacion ManyToOne con Categoria
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_categoria")
+    @JsonManagedReference
     private Categoria categoria;
+
 
 
     // Create constructor
