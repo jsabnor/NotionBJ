@@ -42,6 +42,17 @@ public class Articulo {
     private Categoria categoria;
 
 
+    // Create constructor
+    public Articulo() {
+    }
+
+    public Articulo(LocalDate fecha, String titulo, String contenido, Categoria categoria) {
+        this.fecha = fecha;
+        this.titulo = titulo;
+        this.contenido = contenido;
+        this.categoria = categoria;
+    }
+
     public Long getId() {
         return id;
     }
