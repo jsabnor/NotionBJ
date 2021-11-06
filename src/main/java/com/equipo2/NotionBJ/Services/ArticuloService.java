@@ -42,12 +42,9 @@ public class ArticuloService {
      * @param id del articulo
      * @return objeto Articulo.
      */
+
     public Articulo findById(Long id){
-        Optional<Articulo> articuloOptional=articuloRepository.findById(id);
-        if(articuloOptional.isPresent()) {
-            return articuloOptional.get();
-        }
-        throw new NoSuchElementException();
+        return articuloRepository.findById(id).orElseThrow(() -> new NoSuchElementException("No existe el articulo"));
     }
 
     /**
@@ -65,10 +62,9 @@ public class ArticuloService {
      * @return el articulo actualizado
      */
     public Articulo updateArticulo(Articulo articulo){
-        if(articuloRepository.existsById(articulo.getId())) {
+
             return articuloRepository.save(articulo);
-        }
-        throw new NoSuchElementException();
+
     }
 
     /**
@@ -83,10 +79,20 @@ public class ArticuloService {
      * @param id del articulo a eliminar
      */
     public void deleteById(Long id){
-        if(articuloRepository.existsById(id)){
+
             articuloRepository.deleteById(id);
-        }
-        throw new NoSuchElementException();
+
     }
 
+    // existeArticulo
+    /**
+     * Metodo que comprueba si existe un articulo en la base de datos
+     * @param id del articulo
+     * @return true si existe, false si no existe
+     */
+    public boolean existeArticulo(Long id){
+        return articuloRepository.existsById(id);
+    }
 }
+
+
