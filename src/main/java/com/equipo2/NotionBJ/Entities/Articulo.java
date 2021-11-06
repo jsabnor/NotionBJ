@@ -38,7 +38,7 @@ public class Articulo {
     @ApiModelProperty("Contenido del Articulo")
     private String contenido;
 
-    // relacion ManyToOne con Categoria
+    // Relacion ManyToOne con Categoria
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_categoria")
     @JsonManagedReference

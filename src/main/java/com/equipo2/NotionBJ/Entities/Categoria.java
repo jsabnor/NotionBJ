@@ -1,5 +1,7 @@
 package com.equipo2.NotionBJ.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
@@ -28,13 +30,15 @@ public class Categoria{
     @ApiModelProperty("Categoria ")
     private String categoria;
 
-    /**
-     * Relacion OneToMany bidireccional
-     */
-    @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL, orphanRemoval = true)
+    // Relacion OneToMany con Articulos
+
+    @JsonManagedReference
+    @JsonIgnore
+    @OneToMany(mappedBy = "categoria")
     private List<Articulo> articulos;
 
-    // Create constructors
+
+    // Constructors
 
     public Categoria() {
     }
