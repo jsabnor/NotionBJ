@@ -17,7 +17,7 @@ import java.util.List;
  * @version 1.0
  */
 // Create class category
-
+@Entity
 @Table(name = "categoria")
 public class Categoria{
 
@@ -37,6 +37,9 @@ public class Categoria{
     @JsonIgnore
     @OneToMany(mappedBy = "categoria")
     private List<Articulo> articulos = new ArrayList<>();
+
+
+
 
 
     // Constructors
