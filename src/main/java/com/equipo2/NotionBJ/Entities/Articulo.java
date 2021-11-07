@@ -43,10 +43,12 @@ public class Articulo {
     private String contenido;
 
     // Relacion ManyToOne con Categoria
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_categoria")
+
+
     @JsonManagedReference
     @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_categoria")
     private Categoria categoria;
 
 
