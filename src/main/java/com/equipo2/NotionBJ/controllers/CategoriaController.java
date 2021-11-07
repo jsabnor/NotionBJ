@@ -71,7 +71,7 @@ public class CategoriaController {
     }
 
     // Update categoria
-    @PutMapping("/categoria/update")
+    @PutMapping("/categoria/update/{categoria}")
     public ResponseEntity <Categoria> actualizar(Categoria categoria) {
         if (categoriaService.existCategoria(categoria.getId())){
             categoriaService.updateById(categoria);
