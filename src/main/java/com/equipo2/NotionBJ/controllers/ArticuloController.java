@@ -26,7 +26,7 @@ public class ArticuloController {
     }
     // Método find all
     @GetMapping("/articulos")
-    public ResponseEntity<List<Articulo>> mostrartodos(){
+    public ResponseEntity<List<Articulo>> findAll(){
         return new ResponseEntity<>(articuloService.findAll(), HttpStatus.OK);
     }
 
@@ -45,7 +45,7 @@ public class ArticuloController {
     }
 
     // Metodo update si existeArticulo true
-    @PutMapping("/articulos/{id}")
+    @PutMapping("/articulos/update/{id}")
     public ResponseEntity<Articulo> updateArticulo(@PathVariable Long id, Articulo articulo) {
         if (articuloService.existeArticulo(id)) {
             return new ResponseEntity<>(articuloService.updateArticulo(articulo), HttpStatus.OK);
@@ -54,7 +54,7 @@ public class ArticuloController {
     }
 
     // Metodo delete by id
-    @DeleteMapping("/articulos/{id}")
+    @DeleteMapping("/articulos/delete/{id}")
     public ResponseEntity<Articulo> deleteArticulo(@PathVariable Long id){
         if (articuloService.existeArticulo(id)){
             articuloService.deleteById(id);
@@ -64,7 +64,7 @@ public class ArticuloController {
     }
 
     // Delete all
-    @DeleteMapping("/articulos")
+    @DeleteMapping("/articulos/delete")
     public ResponseEntity<Articulo> deleteAll(){
         articuloService.deleteAll();
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
