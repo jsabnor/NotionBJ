@@ -1,4 +1,4 @@
-package com.equipo2.NotionBJ.security;
+package com.equipo2.NotionBJ.security.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
