@@ -19,5 +19,9 @@ import java.util.List;
 public interface ArticuloRepository extends JpaRepository<Articulo, Long> {
     //Buscar todos los articulos de una categoria especifica
     @Query("select a from articulos a where categoria=?1")
-    List<Articulo> ArticulosByCategoria(Long idCategoria);
+    List<Articulo> findByCategoria(String categoria);
+
+    //Buscar todos los articulos de un autor
+    @Query("select a from articulos a where autor=?1")
+    List<Articulo> findByAutor(String Autor);
 }

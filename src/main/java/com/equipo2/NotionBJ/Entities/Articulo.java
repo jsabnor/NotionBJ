@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import io.swagger.annotations.ApiModelProperty;
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -28,8 +30,10 @@ public class Articulo {
     @ApiModelProperty("Clave primaria")
     private Long id;
 
+    // Atributo autor del articulo
+    private String autor;
+
     @ApiModelProperty("Fecha de creación")
-    @Column(name = "fecha_articulo", nullable = false)
     private LocalDate fecha;
 
     @ApiModelProperty("Titulo del Articulo")
@@ -38,7 +42,7 @@ public class Articulo {
     @ApiModelProperty("Contenido del Articulo")
     private String contenido;
 
-    // relacion ManyToOne con Categoria
+    // Relacion ManyToOne con Categoria
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_categoria")
     @JsonManagedReference
@@ -50,11 +54,13 @@ public class Articulo {
     public Articulo() {
     }
 
-    public Articulo(LocalDate fecha, String titulo, String contenido, Categoria categoria) {
+    public Articulo(String autor,LocalDate fecha, String titulo, String contenido, Categoria categoria) {
+        this.autor = autor;
         this.fecha = fecha;
         this.titulo = titulo;
         this.contenido = contenido;
         this.categoria = categoria;
+
     }
 
     public Long getId() {
@@ -64,6 +70,10 @@ public class Articulo {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public String getAutor() { return autor; }
+
+    public void setAutor(String autor) { this.autor = autor;}
 
     public LocalDate getFecha() {
         return fecha;

@@ -1,8 +1,11 @@
 package com.equipo2.NotionBJ.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,13 +31,15 @@ public class Categoria{
     @ApiModelProperty("Categoria ")
     private String categoria;
 
-    /**
-     * Relacion OneToMany bidireccional
-     */
-    @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Articulo> articulos;
+    // Relacion OneToMany con Articulos
 
-    // Create constructors
+    @JsonManagedReference
+    @JsonIgnore
+    @OneToMany(mappedBy = "categoria")
+    private List<Articulo> articulos = new ArrayList<>();
+
+
+    // Constructors
 
     public Categoria() {
     }
@@ -67,6 +72,11 @@ public class Categoria{
 
     public void setArticulos(List<Articulo> articulos) {
         this.articulos = articulos;
+    }
+
+    // Exists by id categoria
+    public boolean existsById(Long id){
+        return this.id.equals(id);
     }
 }
 
