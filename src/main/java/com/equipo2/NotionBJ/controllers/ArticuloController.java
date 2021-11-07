@@ -70,6 +70,18 @@ public class ArticuloController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
+    // Find by autor
+    @GetMapping("/articulos/autor/{autor}")
+    public ResponseEntity<List<Articulo>> findByAutor(@PathVariable String autor){
+        return new ResponseEntity<>(articuloService.findByAutor(autor), HttpStatus.OK);
+    }
+
+    // Find by categoria
+    @GetMapping("/articulos/categoria/{categoria}")
+    public ResponseEntity<List<Articulo>> findByCategoria(@PathVariable String categoria){
+        return new ResponseEntity<>(articuloService.findByCategoria(categoria), HttpStatus.OK);
+    }
+
     // GETTER AND SETTER
     public ArticuloService getArticuloService() {
         return articuloService;

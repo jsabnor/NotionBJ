@@ -3,6 +3,7 @@ package com.equipo2.NotionBJ.Services;
 import com.equipo2.NotionBJ.Entities.Categoria;
 import com.equipo2.NotionBJ.Repositories.CategoriaRepository;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 public class CategoriaService {
@@ -14,7 +15,7 @@ public class CategoriaService {
     }
 
     // Method findAll
-    public Iterable<Categoria> findAll() {
+    public List<Categoria> findAll() {
         return categoriaRepository.findAll();
     }
 
@@ -29,12 +30,12 @@ public class CategoriaService {
     }
 
     // Update Categoria
-    public Categoria update(Categoria categoria) {
+    public Categoria updateById(Categoria categoria) {
         return categoriaRepository.save(categoria);
     }
 
     // Delete Categoria by id
-    public void delete(Long id) {
+    public void deleteById(Long id) {
         categoriaRepository.deleteById(id);
     }
 
@@ -51,5 +52,10 @@ public class CategoriaService {
     // Getter and Setter
     public CategoriaRepository getCategoriaRepository() {
         return categoriaRepository;
+    }
+
+    // Exists by id
+    public boolean existCategoria(Long id) {
+        return categoriaRepository.existsById(id);
     }
 }

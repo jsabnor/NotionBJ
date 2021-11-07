@@ -93,6 +93,17 @@ public class ArticuloService {
     public boolean existeArticulo(Long id){
         return articuloRepository.existsById(id);
     }
+
+    // findBy Autor
+    public List<Articulo> findByAutor(String autor) {
+        return articuloRepository.findByAutor(autor);
+
+    }
+
+    // find by categoria
+    public List<Articulo> findByCategoria(String categoria) {
+        return articuloRepository.findByCategoria(categoria);
+    }
 }
 
 

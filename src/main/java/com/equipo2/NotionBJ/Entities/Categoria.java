@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -35,7 +36,7 @@ public class Categoria{
     @JsonManagedReference
     @JsonIgnore
     @OneToMany(mappedBy = "categoria")
-    private List<Articulo> articulos;
+    private List<Articulo> articulos = new ArrayList<>();
 
 
     // Constructors
@@ -71,6 +72,11 @@ public class Categoria{
 
     public void setArticulos(List<Articulo> articulos) {
         this.articulos = articulos;
+    }
+
+    // Exists by id categoria
+    public boolean existsById(Long id){
+        return this.id.equals(id);
     }
 }
 
